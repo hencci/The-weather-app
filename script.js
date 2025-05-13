@@ -21,3 +21,30 @@ async function fetchWeatherData(location, unitGroup) {
     console.log(data);
     return data;
 }
+
+//          PROCESS DATA FUNCTIONS
+
+function processCurrentWeather(data) {
+    const current = data.currentConditions;
+    return {
+    location: data.resolvedAddress,
+    conditions: current.conditions,
+    temperature: current.temp,
+    humidity: current.humidity,
+    windspeed: current.windspeed,
+    precipprob: current.precipprob,
+    icon: current.icon,
+    };
+}
+
+function processForecast(data) {
+    return data.days.slice(1, 8).map(day => ({
+        date: day.datetime,
+        conditions: day.conditions,
+        temp: day.temp,
+        humidity: day.humidity,
+        windspeed: day.windspeed,
+        precipprob: day.precipprob,
+        icon: day.icon,
+    }));
+}
