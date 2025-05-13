@@ -1,0 +1,33 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background-color: #222;
+    color: white;
+    background-size: cover;
+    background-position: center;
+    transition: background-color 0.5s, background-image 0.5s;
+}
+
+.app-container {
+    padding: 20px;
+}
+
+input, button {
+    padding: 10px;
+    margin: 5px;
+}
+
+#weather-display, #forecast-display {
+    margin-top: 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+#error-message {
+    color: red;
+    margin-top: 10px;
+}
