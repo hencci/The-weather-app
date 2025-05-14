@@ -56,6 +56,7 @@ function processAndDisplayWeather(data, unitGroup) {
     const forecast = processForecast(data);
     displayCurrentWeather(current, unitGroup);
     displayForecast(forecast, unitGroup);
+    updateBackground(current.conditions);
 }
 
 function displayCurrentWeather(weather, unitGroup) {
@@ -90,4 +91,28 @@ function displayForecast(forecastArray, unitGroup) {
     }).join('');
 
     forecastDisplay.innerHTML = `<h2>7-Day Forecast</h2>${forecastHTML}`;
+}
+
+//           BACKGROUND FUNCTION
+
+function updateBackground(condition) {
+    let bgImage = '';
+    let bgColor = '#333';
+  
+    if (condition.includes('Clear')) {
+        bgImage = 'url(https://images.unsplash.com/photo-1504384308090-c894fdcc538d)';
+        bgColor = '#87CEEB';
+    } else if (condition.includes('Cloud')) {
+        bgImage = 'url(https://images.unsplash.com/photo-1499346030926-9a72daac6c63)';
+        bgColor = '#777';
+    } else if (condition.includes('Rain')) {
+        bgImage = 'url(https://images.unsplash.com/photo-1505483531331-3df5bcca84d7)';
+        bgColor = '#3a3a3a';
+    } else if (condition.includes('Snow')) {
+        bgImage = 'url(https://images.unsplash.com/photo-1608889175441-6d9cba14992a)';
+        bgColor = '#dfe6e9';
+    }
+  
+    document.body.style.backgroundImage = bgImage;
+    document.body.style.backgroundColor = bgColor;
 }
