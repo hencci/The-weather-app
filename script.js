@@ -60,3 +60,25 @@ function processForecast(data) {
             <p>Wind Speed: ${weather.windspeed} ${unitGroup === 'metric' ? 'km/h' : 'mph'}</p>
         `;
     }
+
+    function displayForecast(forecastArray, unitGroup) {
+        const tempUnit = unitGroup === 'metric' ? '°C' : '°F';
+        const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+      
+        const forecastHTML = forecastArray.map(day => {
+            const dateObj = new Date(day.date);
+            const dayName = daysOfWeek[dateObj.getDay()];
+            return `
+                <div class="forecast-day">
+                <h3>${dayName}</h3>
+                <p>${day.conditions}</p>
+                <p>Temp: ${day.temp} ${tempUnit}</p>
+                <p>Humidity: ${day.humidity}%</p>
+                <p>Chance of Rain: ${day.precipprob || 0}%</p>
+                <p>Wind: ${day.windspeed} ${unitGroup === 'metric' ? 'km/h' : 'mph'}</p>
+                </div>
+            `;
+        }).join('');
+
+        forecastDisplay.innerHTML = `<h2>7-Day Forecast</h2>${forecastHTML}`;
+    }
