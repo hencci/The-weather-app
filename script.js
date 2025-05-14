@@ -49,6 +49,15 @@ function processForecast(data) {
     }));
 }
 
+//           DISPLAY FUNCTIONS
+
+function processAndDisplayWeather(data, unitGroup) {
+    const current = processCurrentWeather(data);
+    const forecast = processForecast(data);
+    displayCurrentWeather(current, unitGroup);
+    displayForecast(forecast, unitGroup);
+}
+
 function displayCurrentWeather(weather, unitGroup) {
     const tempUnit = unitGroup === 'metric' ? '°C' : '°F';
     weatherDisplay.innerHTML = `
