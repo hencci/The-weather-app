@@ -27,13 +27,13 @@ async function fetchWeatherData(location, unitGroup) {
 function processCurrentWeather(data) {
     const current = data.currentConditions;
     return {
-    location: data.resolvedAddress,
-    conditions: current.conditions,
-    temperature: current.temp,
-    humidity: current.humidity,
-    windspeed: current.windspeed,
-    precipprob: current.precipprob,
-    icon: current.icon,
+        location: data.resolvedAddress,
+        conditions: current.conditions,
+        temperature: current.temp,
+        humidity: current.humidity,
+        windspeed: current.windspeed,
+        precipprob: current.precipprob,
+        icon: current.icon,
     };
 }
 
@@ -48,3 +48,15 @@ function processForecast(data) {
         icon: day.icon,
     }));
 }
+
+    function displayCurrentWeather(weather, unitGroup) {
+        const tempUnit = unitGroup === 'metric' ? '°C' : '°F';
+        weatherDisplay.innerHTML = `
+            <h2>${weather.location}</h2>
+            <p>${weather.conditions}</p>
+            <p>Temperature: ${weather.temperature} ${tempUnit}</p>
+            <p>Humidity: ${weather.humidity}%</p>
+            <p>Chance of Rain: ${weather.precipprob || 0}%</p>
+            <p>Wind Speed: ${weather.windspeed} ${unitGroup === 'metric' ? 'km/h' : 'mph'}</p>
+        `;
+    }
