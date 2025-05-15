@@ -116,3 +116,25 @@ function updateBackground(condition) {
     document.body.style.backgroundImage = bgImage;
     document.body.style.backgroundColor = bgColor;
 }
+
+//          HELPER FUNCTIONS
+
+function showLoading() {
+    loadingIndicator.classList.remove('hidden');
+    errorMessage.classList.add('hidden');
+}
+  
+function hideLoading() {
+    loadingIndicator.classList.add('hidden');
+}
+
+function showError(message) {
+    errorMessage.textContent = message;
+    errorMessage.classList.remove('hidden');
+}
+
+function clearDisplays() {
+    weatherDisplay.innerHTML = '';
+    forecastDisplay.innerHTML = '';
+    errorMessage.classList.add('hidden');
+}
