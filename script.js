@@ -10,6 +10,25 @@ const errorMessage = document.getElementById('error-message');
 let currentUnit = 'metric'; // metric = Celsius, us = Fahrenheit
 let lastLocation = '';
 
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const location = input.value.trim();
+    if (location) {
+        clearDisplays();
+        showLoading();
+        fetchWeatherData(location, currentUnit)
+        .then(data => {
+            hideLoading();
+            processAndDisplayWeather(data, currentUnit);
+            lastLocation = location;
+        })
+        .catch(err => {
+            hideLoading();
+            showError('Location not found. Please try again.');
+        });
+    }
+})
+
 //      API FETCH FUNCTION
 async function fetchWeatherData(location, unitGroup) {
     const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${encodeURIComponent(location)}?unitGroup=${unitGroup}&key=${apiKey}&include=current,days&elements=datetime,temp,humidity,windspeed,precipprob,conditions,icon`;
