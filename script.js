@@ -100,13 +100,13 @@ function updateBackground(condition) {
     let bgColor = '#333';
   
     if (condition.includes('Clear')) {
-        bgImage = 'url(https://images.unsplash.com/photo-1504384308090-c894fdcc538d)';
+        bgImage = 'url(https://media.istockphoto.com/id/2167408125/photo/blue-sky-background.jpg?s=612x612&w=is&k=20&c=GlJU2xHX-bLk7mqhpT_Th5USU8Mc0L2M6ChvqCvQJfs=)';
         bgColor = '#87CEEB';
     } else if (condition.includes('Cloud')) {
         bgImage = 'url(https://images.unsplash.com/photo-1499346030926-9a72daac6c63)';
         bgColor = '#777';
     } else if (condition.includes('Rain')) {
-        bgImage = 'url(https://images.unsplash.com/photo-1505483531331-3df5bcca84d7)';
+        bgImage = 'url(https://media.istockphoto.com/id/1367804543/photo/cloudy-sky-flashes-and-rain-cloudy-sky-flashes-and-rain.jpg?s=612x612&w=is&k=20&c=beOtz35Jy1bWswnmVpdbt8DXrX6L7vSyge0AoRufYV8=)';
         bgColor = '#3a3a3a';
     } else if (condition.includes('Snow')) {
         bgImage = 'url(https://images.unsplash.com/photo-1608889175441-6d9cba14992a)';
