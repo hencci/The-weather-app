@@ -1,26 +1,66 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
     text-align: center;
     background-color: #222;
-    color: white;
+    color: #fff;
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
     transition: background-color 0.5s, background-image 0.5s;
 }
 
 .app-container {
+    max-width: 900px;
+    margin: 0 auto;
     padding: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 12px;
+    margin-top: 40px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
 }
 
-input, button {
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+form, #toggle-units {
+    margin-bottom: 15px;
+}
+
+input {
     padding: 10px;
-    margin: 5px;
+    width: 60%;
+    max-width: 300px;
+    border: none;
+    border-radius: 8px;
+    margin-right: 10px;
 }
 
-#weather-display, #forecast-display {
-    margin-top: 20px;
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    background-color: #00aaff;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0077cc;
+}
+
+#loading {
+    font-size: 1.2rem;
+    margin: 15px 0;
 }
 
 .hidden {
@@ -28,6 +68,82 @@ input, button {
 }
 
 #error-message {
-    color: red;
+    color: #ff6666;
     margin-top: 10px;
+    font-weight: bold;
+}
+
+#weather-display {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: rgba(255,255,255,0.1);
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+}
+
+#weather-display p {
+    margin: 5px 0;
+    font-size: 1.1rem;
+}
+
+#forecast-display {
+    margin-top: 30px;
+}
+
+.forecast-day {
+    background-color: rgba(255,255,255,0.1);
+    border-radius: 10px;
+    padding: 15px;
+    margin: 0 10px;
+    min-width: 120px;
+    flex: 0 0 auto;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    transition: transform 0.3s;
+}
+
+.forecast-day:hover {
+    transform: scale(1.05);
+}
+
+.forecast-day h3 {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.forecast-day p {
+    margin: 4px 0;
+    font-size: 0.95rem;
+}
+
+#forecast-display > h2 {
+    margin-bottom: 15px;
+}
+
+#forecast-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#forecast-display .forecast-days-wrapper {
+    display: flex;
+    overflow-x: auto;
+    padding: 10px 0;
+    width: 100%;
+    scroll-snap-type: x mandatory;
+}
+
+.forecast-day {
+    scroll-snap-align: start;
+}
+
+/* Scrollbar customization */
+.forecast-days-wrapper::-webkit-scrollbar {
+    height: 8px;
+}
+
+.forecast-days-wrapper::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
 }

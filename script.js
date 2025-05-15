@@ -119,15 +119,18 @@ function displayForecast(forecastArray, unitGroup) {
             <div class="forecast-day">
             <h3>${dayName}</h3>
             <p>${day.conditions}</p>
-            <p>Temp: ${day.temp} ${tempUnit}</p>
-            <p>Humidity: ${day.humidity}%</p>
-            <p>Chance of Rain: ${day.precipprob || 0}%</p>
-            <p>Wind: ${day.windspeed} ${unitGroup === 'metric' ? 'km/h' : 'mph'}</p>
+            <p><strong>${day.temp} ${tempUnit}</strong></p>
+            <p>💧 ${day.humidity}%</p>
+            <p>🌧️ ${day.precipprob || 0}%</p>
+            <p>💨 ${day.windspeed} ${unitGroup === 'metric' ? 'km/h' : 'mph'}</p>
             </div>
         `;
     }).join('');
 
-    forecastDisplay.innerHTML = `<h2>7-Day Forecast</h2>${forecastHTML}`;
+    forecastDisplay.innerHTML = `
+        <h2>7-Day Forecast</h2>
+        <div class="forecast-days-wrapper">${forecastHTML}</div>
+    `;
 }
 
 //           BACKGROUND FUNCTION
