@@ -29,6 +29,24 @@ form.addEventListener('submit', (e) => {
     }
 })
 
+toggleButton.addEventListener('click', () => {
+    currentUnit = currentUnit === 'metric' ? 'us' : 'metric';
+    toggleButton.textContent = currentUnit === 'metric' ? 'Switch to °F' : 'Switch to °C';
+    if (lastLocation) {
+        clearDisplays();
+        showLoading();
+        fetchWeatherData(lastLocation, currentUnit)
+        .then(data => {
+            hideLoading();
+            processAndDisplayWeather(data, currentUnit);
+        })
+        .catch(err => {
+            hideLoading();
+            showError('Location not found. Please try again.');
+        });
+    }
+});
+
 //      API FETCH FUNCTION
 async function fetchWeatherData(location, unitGroup) {
     const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${encodeURIComponent(location)}?unitGroup=${unitGroup}&key=${apiKey}&include=current,days&elements=datetime,temp,humidity,windspeed,precipprob,conditions,icon`;
