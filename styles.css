@@ -7,19 +7,18 @@ body {
     margin: 0;
     padding: 0;
     text-align: center;
-    background-color: #222;
-    color: #fff;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    transition: background-color 0.5s, background-image 0.5s;
+    background-color:rgb(4, 6, 7);
+    color: #030731;
 }
 
 .app-container {
     max-width: 900px;
     margin: 0 auto;
     padding: 20px;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-image: url("https://media.istockphoto.com/id/2167408125/photo/blue-sky-background.jpg?s=612x612&w=is&k=20&c=GlJU2xHX-bLk7mqhpT_Th5USU8Mc0L2M6ChvqCvQJfs=");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
     border-radius: 12px;
     margin-top: 40px;
     box-shadow: 0 0 20px rgba(0,0,0,0.3);
@@ -28,6 +27,7 @@ body {
 h1 {
     font-size: 2.5rem;
     margin-bottom: 20px;
+    color: bisque;
 }
 
 form, #toggle-units {
@@ -76,7 +76,6 @@ button:hover {
 #weather-display {
     margin-top: 20px;
     padding: 20px;
-    background-color: rgba(255,255,255,0.1);
     border-radius: 10px;
     backdrop-filter: blur(5px);
 }
@@ -92,6 +91,7 @@ button:hover {
 
 .forecast-day {
     background-color: rgba(255,255,255,0.1);
+    color: #5395d3;
     border-radius: 10px;
     padding: 15px;
     margin: 0 10px;
