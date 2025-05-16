@@ -40,6 +40,10 @@ weather-app/ <br>
 - **JavaScript (ES6+)**
 - **[Visual Crossing Weather API](https://www.visualcrossing.com/)**
 
+## 📸 Preview
+
+![Screenshot](./Image/weather.PNG)
+
 ## 🚀 Getting Started
 
 ### 1. Clone the repository
