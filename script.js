@@ -13,21 +13,34 @@ let lastLocation = '';
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     const location = input.value.trim();
-    if (location) {
-        clearDisplays();
-        showLoading();
-        fetchWeatherData(location, currentUnit)
-        .then(data => {
-            hideLoading();
-            processAndDisplayWeather(data, currentUnit);
-            lastLocation = location;
-        })
-        .catch(err => {
-            hideLoading();
-            showError('Location not found. Please try again.');
-        });
+    clearDisplays();
+
+    if (!location) {
+        showError('Please enter a location.');
+        input.classList.add('error');
+        return;
     }
-})
+
+    input.classList.remove('error');
+    showLoading();
+
+    fetchWeatherData(location, currentUnit)
+    .then(data => {
+        hideLoading();
+        processAndDisplayWeather(data, currentUnit);
+        lastLocation = location;
+    })
+    .catch(err => {
+        hideLoading();
+        if (err.message === 'Location not found') {
+            showError(`Could not find "${location}". Please check the spelling and try again.`);
+        }
+        else {
+            showError('An error occurred while fetching weather data. Please try again.');
+        }
+        input.classList.add('error');
+    });
+});
 
 toggleButton.addEventListener('click', () => {
     currentUnit = currentUnit === 'metric' ? 'us' : 'metric';
